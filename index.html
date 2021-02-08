@@ -1,0 +1,135 @@
+<!-- Original website template attributed to
+Mark Otto, Jacob Thornton, and Bootstrap contributors
+-->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Goluck Konuko">
+    <meta name="generator" content="Hugo 0.79.0">
+    <title>Deep Animation Coding</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/blog/">
+    
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <style>
+      
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="css/blog.css">
+    <link rel="stylesheet" href="css/main.css">
+
+  </head>
+  <body>
+    
+<div class="container">
+  <header class="blog-header py-3">
+    <div class="row flex-nowrap justify-content-around align-items-center">
+      <div class="col-4 text-center">
+        <a class="blog-header-logo text-dark " href="#">Deep Animation Coding</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="nav-scroller py-1 mb-2">
+    <nav class="nav d-flex justify-content-around">
+      <a class="p-2 link-primary" href="#">Paper</a>
+      <a class="p-2 link-secondary" href="#">Code</a>
+      <!-- <a class="p-2 link-secondary" href="#">3</a>
+      <a class="p-2 link-secondary" href="#">4</a>
+       -->
+    </nav>
+  </div>
+</div>
+
+<main class="container">
+  <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+    <div class="col-md-12 px-0">
+      <h1 class="display-4 font-italic">Abstract</h1>
+      <p class="lead my-3">
+        In this work we propose a novel deep learning approach for ultra-low bitrate video compression for video conferencing 
+                applications. To address the shortcomings of current video compression paradigms when the available bandwidth is 
+                extremely limited, we adopt a model-based approach that employs deep neural networks to encode motion information as 
+                keypoint displacement and reconstruct the video signal at the decoder side. The overall system is trained in an 
+                nd-to-end fashion minimizing a reconstruction error on the encoder output.
+                Objective and subjective quality evaluation experiments demonstrate that the proposed approach provides an 
+                average bitrate reduction for the same visual quality of more than 80% compared to HEVC.
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <h3 class="pb-4 mb-4 font-italic border-bottom">
+        Overview
+      </h3>
+      <article class="blog-post">
+        <h2 class="blog-post-title">Overview</h2>
+        <p>
+          In this work, we describe, for the first time, a video coding pipeline that employs the popular <a href="#">First Order Model</a> 
+                for video animation, to achieve long-term video frame prediction. 
+                Our scheme is open loop: we encode the first frame of the video using conventional Intra coding, 
+                and transmit keypoints extracted by subsequent frames in the bitstream. 
+                At the decoder side, the received keypoints are used to warp the Intra reference frame to reconstruct the video. 
+                We also propose and analyze an adaptive Intra frame selection scheme that, 
+                in conjunction with varying the quantization of Intra frames, 
+                enable to attain different rate-distortion operating points. 
+                Our experiments, validated with several video quality metrics and a subjective test campaign, 
+                show average bitrate savings compared to HEVC of over 80\%, 
+                demonstrating the potential of this approach for ultra-low bitrate video conferencing.
+        </p>
+      </article><!-- /.blog-post -->
+
+      <article class="blog-post">
+        <h2 class="blog-post-title">Results</h2>
+      </article><!-- /.blog-post -->
+
+      <!-- <nav class="blog-pagination" aria-label="Pagination">
+        <a class="btn btn-outline-primary" href="#">Previous</a>
+        <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">More..</a>
+      </nav> -->
+
+    </div>
+
+    <div class="col-md-4">
+         <div class="p-4">
+        <h4 class="font-italic">Key tools</h4>
+        <ol class="list-unstyled mb-0">
+          <li><a href="#">Pre-trained First Order Model :
+          </a> Image animation model designed for motion transfer from a driving video to a
+          source frame with a similar object</li>
+          <li><a href="#">BPG Codec: 
+          </a> An efficient implementation of the HEVC intra-prediction mode for image compression
+          with a lean, optimized bitstream header</li>
+        </ol>
+      </div>
+
+      <!-- <div class="p-4">
+        <h4 class="font-italic">Elsewhere</h4>
+        <ol class="list-unstyled">
+          <li><a href="#">paper</a></li>
+          <li><a href="#">code</a></li>
+          <li><a href="#">Facebook</a></li>
+        </ol>
+      </div> -->
+    </div>
+
+  </div><!-- /.row -->
+
+</main><!-- /.container -->
+
+<footer class="blog-footer">
+  <p>
+    <a href="#">Back to top</a>
+  </p>
+</footer>  
+  </body>
+</html>

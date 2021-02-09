@@ -53,11 +53,16 @@ Mark Otto, Jacob Thornton, and Bootstrap contributors
         <a class="blog-header-logo text-blue" style="font-size: medium; font-style: oblique; text-decoration: none;"  href="#">Stephane Lathuiliere</a>
       </div>
     </div>
+    <div class="row flex-nowrap justify-content-center align-items-center" style="margin-top: 10pt; margin-bottom: 2pt;">
+      <div class="col-12 text-center">
+        <h5 class="blog-header-logo text-dark" style="font-size: 14pt;"> Accepted to ICASSP 2021</h5>
+      </div>
+    </div>
   </header>
 
   <div class="nav-scroller py-1 mb-2">
     <nav class="nav d-flex justify-content-between">
-      <a class="p-2 link-primary" href="https://arxiv.org/abs/2012.00346">ICASSP Accepted Paper</a>
+      <a class="p-2 link-primary" href="https://arxiv.org/abs/2012.00346">Paper</a>
       <a class="p-2 link-danger" href="https://github.com/Goluck-Konuko/dac">Code</a>
       <!-- <a class="p-2 link-secondary" href="#">3</a>
       <a class="p-2 link-secondary" href="#">4</a>
@@ -107,7 +112,7 @@ Mark Otto, Jacob Thornton, and Bootstrap contributors
 
       <article class="blog-post">
         <h2 class="blog-post-title">Results</h2>
-        <div class="row" style="margin-top: 10pt; background-color: blanchedalmond; opacity: 0.98;">
+        <div class="row" style="margin-top: 10pt;">
           <p><strong>Voxceleb</strong> is a large audio-visual dataset of human speech of 22,496 videos, extracted from YouTube videos.
           We follow the pre-processing of \cite{siarohin2019first} 
           and filter out sequences that have resolution lower than 256x256 and resize the remaining videos 
@@ -115,14 +120,14 @@ Mark Otto, Jacob Thornton, and Bootstrap contributors
           For evaluation, in order to obtain high quality videos, we select the 90 test videos with the highest resolution before resizing.</p>
           <div class="text-center" style="display: grid; grid-template-columns: 20% 20% 20% 20% 20%; margin-top: 5pt;">
             <h3 style="font-size: medium;">Original Video</h3>
-            <h3 style="font-size: medium;">HEVC (>50 Kbps)</h3>
-            <h3 style="font-size: medium;">HEVC (~10 Kbps)</h3>
-            <h3 style="font-size: medium;">Ours (~10 Kbps)</h3>
-            <h3 style="font-size: medium;">Ours (~1.5 Kbps)</h3>
+            <h3 style="font-size: medium;">HEVC <span style="color: crimson;">(>50 Kbps)</span></h3>
+            <h3 style="font-size: medium;">HEVC <span style="color: crimson;">(~10 Kbps)</span></h3>
+            <h3 style="font-size: medium;">Ours <span style="color: blue;">(~10 Kbps)</span></h3>
+            <h3 style="font-size: medium;">Ours <span style="color: blue;">(~1.5 Kbps)</span></h3>
           </div>
           <video src="assets/all_comp_vox.mp4" width="100%" height="100%" autoplay controls loop></video> 
         </div>
-        <div class="row" style="margin-top: 10pt; background-color:azure; opacity: 0.98;">
+        <div class="row" style="margin-top: 20pt;">
           <p>
             <strong>Xiph.org</strong> is a collection of videos we downloaded from <a href="https://media.xiph.org/video/derf/">Xiph.org</a>. 
               This repository includes video sequences widely used in video processing (``News'', ``Akiyo'', ``Salesman'', etc.). 
@@ -132,10 +137,10 @@ Mark Otto, Jacob Thornton, and Bootstrap contributors
           </p>
           <div class="text-center" style="display: grid; grid-template-columns: 20% 20% 20% 20% 20%; margin-top: 5pt;">
             <h3 style="font-size: medium;">Original Video</h3>
-            <h3 style="font-size: medium;">HEVC (>50 Kbps)</h3>
-            <h3 style="font-size: medium;">HEVC (~10 Kbps)</h3>
-            <h3 style="font-size: medium;">Ours (~10 Kbps)</h3>
-            <h3 style="font-size: medium;">Ours (~1.5 Kbps)</h3>
+            <h3 style="font-size: medium;">HEVC <span style="color: crimson;">(>50 Kbps)</span></h3>
+            <h3 style="font-size: medium;">HEVC <span style="color: crimson;">(~10 Kbps)</span></h3>
+            <h3 style="font-size: medium;">Ours <span style="color: blue;">(~10 Kbps)</span></h3>
+            <h3 style="font-size: medium;">Ours <span style="color: blue;">(~1.5 Kbps)</span></h3>
           </div>
           <video src="assets/all_comp_xiph.mp4" width="100%" height="100%" autoplay controls loop></video>
         </div>

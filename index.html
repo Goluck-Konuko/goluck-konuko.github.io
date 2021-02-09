@@ -33,16 +33,32 @@ Mark Otto, Jacob Thornton, and Bootstrap contributors
 <div class="container">
   <header class="blog-header py-3">
     <div class="row flex-nowrap justify-content-around align-items-center">
-      <div class="col-4 text-center">
-        <a class="blog-header-logo text-dark " href="#">Deep Animation Coding</a>
+      <div class="col-12 text-center">
+        <a class="blog-header-logo text-dark " href="#">Ultra-low bitrate video conferencing using deep image animation</a>
+      </div>
+    </div>
+    <div class="row flex-nowrap justify-content-center align-items-center" style="margin-top: 10pt; margin-bottom: 2pt;">
+      <div class="col-2 text-end">
+        <h5 class="blog-header-logo text-dark " style="font-size: medium; font-style: oblique; text-decoration: none;" href="#">Authors: </h5>
+      </div>
+
+      <div class="col-2 text-end">
+        <a class="blog-header-logo text-blue " style="font-size: medium; font-style: oblique; text-decoration: none;" href="#">Goluck Konuko</a>
+      </div>
+      <div class="col-2 text-center">
+        <a class="blog-header-logo text-blue " style="font-size: medium; font-style: oblique; text-decoration: none;"  
+        href="https://l2s.centralesupelec.fr/u/valenzise-giuseppe/">Giuseppe Valenzise</a>
+      </div>
+      <div class="col-4 text-start">
+        <a class="blog-header-logo text-blue" style="font-size: medium; font-style: oblique; text-decoration: none;"  href="#">Stephane Lathuiliere</a>
       </div>
     </div>
   </header>
 
   <div class="nav-scroller py-1 mb-2">
-    <nav class="nav d-flex justify-content-around">
-      <a class="p-2 link-primary" href="https://arxiv.org/abs/2012.00346">Paper</a>
-      <a class="p-2 link-secondary" href="https://github.com/Goluck-Konuko/dac">Code</a>
+    <nav class="nav d-flex justify-content-between">
+      <a class="p-2 link-primary" href="https://arxiv.org/abs/2012.00346">ICASSP Accepted Paper</a>
+      <a class="p-2 link-danger" href="https://github.com/Goluck-Konuko/dac">Code</a>
       <!-- <a class="p-2 link-secondary" href="#">3</a>
       <a class="p-2 link-secondary" href="#">4</a>
        -->
@@ -67,7 +83,7 @@ Mark Otto, Jacob Thornton, and Bootstrap contributors
   </div>
 
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
       <article class="blog-post">
         <h2 class="blog-post-title">Overview</h2>
         <p>
@@ -91,8 +107,40 @@ Mark Otto, Jacob Thornton, and Bootstrap contributors
 
       <article class="blog-post">
         <h2 class="blog-post-title">Results</h2>
+        <div class="row" style="margin-top: 10pt; background-color: blanchedalmond; opacity: 0.98;">
+          <p><strong>Voxceleb</strong> is a large audio-visual dataset of human speech of 22,496 videos, extracted from YouTube videos.
+          We follow the pre-processing of \cite{siarohin2019first} 
+          and filter out sequences that have resolution lower than 256x256 and resize the remaining videos 
+          to 256x256 preserving the aspect ratio. This dataset is split into 12,331 training and 444 test videos. 
+          For evaluation, in order to obtain high quality videos, we select the 90 test videos with the highest resolution before resizing.</p>
+          <div class="text-center" style="display: grid; grid-template-columns: 20% 20% 20% 20% 20%; margin-top: 5pt;">
+            <h3 style="font-size: medium;">Original Video</h3>
+            <h3 style="font-size: medium;">HEVC (>50 Kbps)</h3>
+            <h3 style="font-size: medium;">HEVC (~10 Kbps)</h3>
+            <h3 style="font-size: medium;">Ours (~10 Kbps)</h3>
+            <h3 style="font-size: medium;">Ours (~1.5 Kbps)</h3>
+          </div>
+          <video src="assets/all_comp_vox.mp4" width="100%" height="100%" autoplay controls loop></video> 
+        </div>
+        <div class="row" style="margin-top: 10pt; background-color:azure; opacity: 0.98;">
+          <p>
+            <strong>Xiph.org</strong> is a collection of videos we downloaded from <a href="https://media.xiph.org/video/derf/">Xiph.org</a>. 
+              This repository includes video sequences widely used in video processing (``News'', ``Akiyo'', ``Salesman'', etc.). 
+              We select 16 sequences of talking heads that correspond to the targeted video conferencing scenario. 
+              The full list of videos used in the experiments is available on the <a href="https://github.com/Goluck-Konuko/dac.git">GitHub page</a> 
+              of the paper. The region of interest is cropped with a resolution of 256x256 with speakers' faces comprising 75% of the frame. 
+          </p>
+          <div class="text-center" style="display: grid; grid-template-columns: 20% 20% 20% 20% 20%; margin-top: 5pt;">
+            <h3 style="font-size: medium;">Original Video</h3>
+            <h3 style="font-size: medium;">HEVC (>50 Kbps)</h3>
+            <h3 style="font-size: medium;">HEVC (~10 Kbps)</h3>
+            <h3 style="font-size: medium;">Ours (~10 Kbps)</h3>
+            <h3 style="font-size: medium;">Ours (~1.5 Kbps)</h3>
+          </div>
+          <video src="assets/all_comp_xiph.mp4" width="100%" height="100%" autoplay controls loop></video>
+        </div>
         
-        <div class="accordion" id="accordionExample">
+        <!-- <div class="accordion" id="accordionExample">
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -101,14 +149,7 @@ Mark Otto, Jacob Thornton, and Bootstrap contributors
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
               <div class="accordion-body">
-                <div class="text-center" style="display: grid; grid-template-columns: 20% 20% 20% 20% 20%;">
-                  <h3 style="font-size: medium;">Original Video</h3>
-                  <h3 style="font-size: medium;">HEVC (high_br)</h3>
-                  <h3 style="font-size: medium;">HEVC (low_br)</h3>
-                  <h3 style="font-size: medium;">Ours (high_br)</h3>
-                  <h3 style="font-size: medium;">Ours (low_br)</h3>
-                </div>
-                <video src="assets/all_comp_vox.mp4" width="100%" height="100%" autoplay controls loop></video> 
+                
               </div>
             </div>
           </div>
@@ -122,53 +163,140 @@ Mark Otto, Jacob Thornton, and Bootstrap contributors
               <div class="accordion-body">
                 <div class="text-center" style="display: grid; grid-template-columns: 20% 20% 20% 20% 20%;">
                   <h3 style="font-size: medium;">Original Video</h3>
-                  <h3 style="font-size: medium;">HEVC (high_br)</h3>
-                  <h3 style="font-size: medium;">HEVC (low_br)</h3>
-                  <h3 style="font-size: medium;">Ours (high_br)</h3>
-                  <h3 style="font-size: medium;">Ours (low_br)</h3>
+                  <h3 style="font-size: medium;">HEVC (>50 Kbps)</h3>
+                  <h3 style="font-size: medium;">HEVC (~10 Kbps)</h3>
+                  <h3 style="font-size: medium;">Ours (~10 Kbps)</h3>
+                  <h3 style="font-size: medium;">Ours (~1.5 Kbps)</h3>
                 </div>
                 <video src="assets/all_comp_xiph.mp4" width="100%" height="100%" autoplay controls loop></video> 
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </article><!-- /.blog-post -->
 
-      <!-- <nav class="blog-pagination" aria-label="Pagination">
-        <a class="btn btn-outline-primary" href="#">Previous</a>
-        <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">More..</a>
-      </nav> -->
+      <article class="blog-post">
+        <h2 class="blog-post-title">Quantitative Results</h2>
+        <p>
+          We compare our approach with the <a href="https://github.com/listenlink/HM"><strong>standard HM 16 (HEVC) low delay configuration</strong></a> by 
+          by performing subjective test on 10 videos (8 from Voxceleb and 2 from Xiph.org) using Amazon Mechanical Turk (AMT).
+          Each sequence is encoded using 8 different bite-rate configurations (4 with HEVC, 4 with proposed method) ranging from 5Kbps to 55Kbps. 
+          We implement a simple Double Stimulus Impairment Scale (DSIS) test  interface in AMT.
+        </p>
+        <div class="row" >
+          <div class="col-4">
+            <img src="assets/rd/mos_bt_full_3.png" width="100%" height="300px" alt="mean opinion score and confidence interval"/>
+          </div>
+          <div class="col-4" style="padding-top: 15pt; font-size: 11pt;">
+            <table class="table text-center">
+              <col>
+              <colgroup span="2"></colgroup>
+              <colgroup span="2"></colgroup>
+              <tr>
+                <td rowspan="2"></td>
+                <th colspan="2" scope="colgroup">VoxCeleb</th>
+                <th colspan="2" scope="colgroup">Xiph.org</th>
+              </tr>
+              <tr>
+                <th scope="col">BD quality</th>
+                <th scope="col">BD rate</th>
+                <th scope="col">BD quality</th>
+                <th scope="col">BD rate</th>
+              </tr>
+              <tr>
+                <th scope="row">PSNR</th>
+                <td>2.88</td>
+                <td>65.50</td>
+                <td>3.14</td>
+                <td>72.44</td>
+              </tr>
+              <tr>
+                <th scope="row">MS-SSIM</th>
+                <td>0.070</td>
+                <td>83.96</td>
+                <td>0.075</td>
+                <td>86.41</td>
+              </tr>
+              <tr>
+                <th scope="row">VIF</th>
+                <td>0.027</td>
+                <td>72.29</td>
+                <td>0.021</td>
+                <td>68.02</td>
+              </tr>
+              <tr>
+                <th scope="row">VMAF</th>
+                <td>37.43</td>
+                <td>82.29</td>
+                <td>31.04</td>
+                <td>83.44</td>
+              </tr>
+              
+
+              <!-- \textbf{PSNR}& 0.92/0.95& 0.77/0.92\\
+\textbf{SSIM}& 0.91/0.74& 0.80/0.67\\
+\textbf{MS-SSIM}& 0.94/0.95 & 0.84/0.95\\
+\textbf{VIF} & 0.38/0.75 & 0.28/0.75\\
+\textbf{VMAF}& 0.94/0.96 & 0.80/0.89\\ -->
+            </table>
+          </div>
+          <div class="col-4" style="padding-top: 15pt; font-size: 11pt;">
+            <table class="table text-center">
+              <col>
+              <colgroup span="2"></colgroup>
+              <colgroup span="2"></colgroup>
+              <tr>
+                <td rowspan="2"></td>
+                <th colspan="2" scope="colgroup">PCC</th>
+                <th colspan="2" scope="colgroup">SROCC</th>
+              </tr>
+              <tr>
+                <th scope="col">BD quality</th>
+                <th scope="col">BD rate</th>
+                <th scope="col">BD quality</th>
+                <th scope="col">BD rate</th>
+              </tr>
+              <tr>
+                <th scope="row">PSNR</th>
+                <td>0.92</td>
+                <td>0.95</td>
+                <td>0.77</td>
+                <td>0.92</td>
+              </tr>
+              <tr>
+                <th scope="row">MS-SSIM</th>
+                <td>0.94</td>
+                <td>0.95</td>
+                <td>0.84</td>
+                <td>0.95</td>
+              </tr>
+              <tr>
+                <th scope="row">VIF</th>
+                <td>0.38</td>
+                <td>0.75</td>
+                <td>0.28</td>
+                <td>0.75</td>
+              </tr>
+              <tr>
+                <th scope="row">VMAF</th>
+                <td>0.94</td>
+                <td>0.96</td>
+                <td>0.80</td>
+                <td>0.89</td>
+              </tr>
+              </table>
+        </div>
+        <p>
+          The Mean Opinion Score computed over a 95% confidence interval shows that our approach clearly outperforms HEVC 
+          (average BD-MOS = 1.68, BD-rate = -82.35\%). 
+          We further determined the Pearson Correlation Coefficient (PCC) and 
+          the Spearman  Rank-Order  Correlation  Coefficient (SROCC) between MOS and 
+          five commonly used quality metrics, for our codec and HEVC. 
+          We observe that, except VIF, these metrics correlate well with human judgment, at least on the tested data. 
+          Based on these preliminary results, we proceed with an extensive performance evaluation of the proposed method using these quality metrics.</p>
+      </article><!-- /.blog-post -->
 
     </div>
-
-    <div class="col-md-4">
-         <div class="p-4">
-        <h4 class="font-italic">Key tools</h4>
-        <ol class="list-unstyled mb-0">
-          <li><a href="https://drive.google.com/file/d/1za1-akGze_GuZdalJjSjZS2BjzDnVwS7/view?usp=sharing">Pre-trained First Order Model :
-          </a> Image animation model designed for motion transfer from a driving video to a
-          source frame with a similar object</li>
-          <li><a href="https://bellard.org/bpg/">BPG Codec: 
-          </a> An efficient implementation of the HEVC intra-prediction mode for image compression
-          with a lean, optimized bitstream header</li>
-        </ol>
-      </div>
-
-      <div class="p-4">
-        <h4 class="font-italic">Quantitative</h4>
-        <div class="text-center">
-          <img src="assets/rd/mos_bt_full_3.png" width="100%" height="250px" alt="mean opinion score and confidence interval"/>
-          <h5>Subjective evaluation results</h5>
-        </div>
-        <div class="container text-center">
-          <img src="assets/rd/vmaf_vox_rd.png" width="100%" height="250px" alt="vmaf"/>
-          <img src="assets/rd/ssim_vox_rd.png" width="100%" height="250px" alt="ssim"/>
-          <img src="assets/rd/ms_ssim_vox_rd.png" width="100%" height="250px" alt="ms-ssim"/>
-        </div>
-        
-      </div>
-    </div>
-
   </div><!-- /.row -->
 
 </main><!-- /.container -->

@@ -1,319 +1,481 @@
-<!-- Original website template attributed to
-Mark Otto, Jacob Thornton, and Bootstrap contributors
--->
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Goluck Konuko">
-    <meta name="generator" content="Hugo 0.79.0">
-    <title>Deep Animation Coding</title>
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/blog/">
-    
-    <!-- Bootstrap core CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" 
-    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>H-DAC: Hybrid coding with Deep Animation Models for Ultra-Low Bitrate Video Conferencing</title>
 
-    <style>
-      
-    </style>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
-    
-    <!-- Custom styles for this template -->
-    <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="css/blog.css">
-    <link rel="stylesheet" href="css/main.css">
+    function gtag() {
+      dataLayer.push(arguments);
+    }
 
-  </head>
-  <body>
-    
-<div class="container">
-  <header class="blog-header py-3">
-    <div class="row flex-nowrap justify-content-around align-items-center">
-      <div class="col-12 text-center">
-        <a class="blog-header-logo text-dark " href="#">Ultra-low bitrate video conferencing using deep image animation</a>
-      </div>
-    </div>
-    <div class="row flex-nowrap justify-content-center align-items-center" style="margin-top: 10pt; margin-bottom: 2pt;">
-      <div class="col-2 text-end">
-        <h5 class="blog-header-logo text-dark " style="font-size: medium; font-style: oblique; text-decoration: none;">Authors: </h5>
-      </div>
+    gtag('js', new Date());
 
-      <div class="col-2 text-end">
-        <a class="blog-header-logo text-blue " style="font-size: medium; font-style: oblique; text-decoration: none;" 
-        href="https://www.linkedin.com/in/goluck-konuko/" target="_blank" rel="noopener noreferrer">Goluck Konuko</a>
-      </div>
-      <div class="col-2 text-center">
-        <a class="blog-header-logo text-blue " style="font-size: medium; font-style: oblique; text-decoration: none;"  
-        href="https://l2s.centralesupelec.fr/u/valenzise-giuseppe/" target="_blank" rel="noopener noreferrer">Giuseppe Valenzise</a>
-      </div>
-      <div class="col-4 text-start">
-        <a class="blog-header-logo text-blue" style="font-size: medium; font-style: oblique; text-decoration: none;" 
-        href="http://stelat.eu/" target="_blank" rel="noopener noreferrer">Stephane Lathuiliere</a>
-      </div>
-    </div>
-    <div class="row flex-nowrap justify-content-center align-items-center" style="margin-top: 10pt; margin-bottom: 2pt;">
-      <div class="col-12 text-center">
-        <h5 class="blog-header-logo text-dark" style="font-size: 14pt;"> Accepted to ICASSP 2021</h5>
-      </div>
-    </div>
-  </header>
+    gtag('config', 'G-PYVRSFMDRL');
+  </script> -->
 
-  <div class="nav-scroller py-1 mb-2">
-    <nav class="nav d-flex justify-content-between">
-      <a class="p-2 link-primary" href="https://arxiv.org/abs/2012.00346">Paper</a>
-      <a class="p-2 link-danger" href="https://github.com/Goluck-Konuko/dac">Code</a>
-      <!-- <a class="p-2 link-secondary" href="#">3</a>
-      <a class="p-2 link-secondary" href="#">4</a>
-       -->
-    </nav>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
   </div>
-</div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://l2s.centralesupelec.fr/u/konuko-goluck/">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
 
-<main class="container">
-  <div class="p-4 p-md-5 mb-4 text-dark rounded bg-light">
-    <div class="col-md-12 px-0">
-      <h1 class="display-4 font-italic">Abstract</h1>
-      <p class="lead my-3">
-        In this work we propose a novel deep learning approach for ultra-low bitrate video compression for video conferencing 
-                applications. To address the shortcomings of current video compression paradigms when the available bandwidth is 
-                extremely limited, we adopt a model-based approach that employs deep neural networks to encode motion information as 
-                keypoint displacement and reconstruct the video signal at the decoder side. The overall system is trained in an 
-                nd-to-end fashion minimizing a reconstruction error on the encoder output.
-                Objective and subjective quality evaluation experiments demonstrate that the proposed approach provides an 
-                average bitrate reduction for the same visual quality of more than 80% compared to HEVC.
-      </p>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-12">
-      <article class="blog-post">
-        <h2 class="blog-post-title">Overview</h2>
-        <p>
-          In this work, we describe, for the first time, a video coding pipeline that employs the popular 
-          <a href="https://github.com/AliaksandrSiarohin/first-order-model">First Order Model</a> 
-                for video animation, to achieve long-term video frame prediction. 
-                Our scheme is open loop: we encode the first frame of the video using conventional Intra coding, 
-                and transmit keypoints extracted by subsequent frames in the bitstream. 
-                At the decoder side, the received keypoints are used to warp the Intra reference frame to reconstruct the video. 
-                We also propose and analyze an adaptive Intra frame selection scheme that, 
-                in conjunction with varying the quantization of Intra frames, 
-                enable to attain different rate-distortion operating points. 
-                Our experiments, validated with several video quality metrics and a subjective test campaign, 
-                show average bitrate savings compared to HEVC of over 80%, 
-                demonstrating the potential of this approach for ultra-low bitrate video conferencing.
-        </p>
-        <div class="pipeline">
-          <img src="assets/pipeline.png" alt="Basic coding pipeline" width="100%" height="400px"/>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="#">
+            Coming soon..
+          </a>
+          <!-- <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a> -->
         </div>
-      </article><!-- /.blog-post -->
+      </div>
+    </div>
 
-      <article class="blog-post">
-        <h2 class="blog-post-title">Results</h2>
-        <div class="row" style="margin-top: 10pt;">
-          <p><strong>Voxceleb</strong> is a large audio-visual dataset of human speech of 22,496 videos, extracted from YouTube videos.
-          We follow the pre-processing of \cite{siarohin2019first} 
-          and filter out sequences that have resolution lower than 256x256 and resize the remaining videos 
-          to 256x256 preserving the aspect ratio. This dataset is split into 12,331 training and 444 test videos. 
-          For evaluation, in order to obtain high quality videos, we select the 90 test videos with the highest resolution before resizing.</p>
-          <div class="text-center" style="display: grid; grid-template-columns: 20% 20% 20% 20% 20%; margin-top: 5pt;">
-            <h3 style="font-size: medium;">Original Video</h3>
-            <h3 style="font-size: medium;">HEVC <span style="color: crimson;">(>50 Kbps)</span></h3>
-            <h3 style="font-size: medium;">HEVC <span style="color: crimson;">(~10 Kbps)</span></h3>
-            <h3 style="font-size: medium;">Ours <span style="color: blue;">(~10 Kbps)</span></h3>
-            <h3 style="font-size: medium;">Ours <span style="color: blue;">(~1.5 Kbps)</span></h3>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">H-DAC: Hybrid coding with Deep Animation Models for Ultra-Low Bitrate Video Conferencing</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://l2s.centralesupelec.fr/u/konuko-goluck/">Goluck Konuko</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://stelat.eu/">Stéphane Lathuilière</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://l2s.centralesupelec.fr/u/valenzise-giuseppe">Giuseppe Valenzise</a><sup>3</sup>,
+            </span>
           </div>
-          <video src="assets/all_comp_vox.mp4" width="100%" height="100%" autoplay controls loop></video> 
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Université Paris-Saclay,CentraleSupélec,L2S</span>
+            <span class="author-block"><sup>2</sup>IP Paris, Télécom Paris, LTCI</span>
+            <span class="author-block"><sup>3</sup>Université Paris-Saclay, CNRS, CentraleSupélec, L2S</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (coming soon..)</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://drive.google.com/drive/folders/1QXuKGo7YjklZpKDViLUc3VnI7Odd-vaE?usp=sharing"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Dataset</span>
+                  </a>
+            </div>
+
+          </div>
         </div>
-        <div class="row" style="margin-top: 20pt;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/teaser.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
+        free-viewpoint
+        portraits.
+      </h2>
+    </div>
+  </div>
+</section> -->
+
+<!-- 
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/steve.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/chair-tp.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/shiba.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/fullbody.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/blueshirt.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/mask.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/coffee.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/toby2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
           <p>
-            <strong>Xiph.org</strong> is a collection of videos we downloaded from <a href="https://media.xiph.org/video/derf/">Xiph.org</a>. 
-              This repository includes video sequences widely used in video processing (``News'', ``Akiyo'', ``Salesman'', etc.). 
-              We select 16 sequences of talking heads that correspond to the targeted video conferencing scenario. 
-              The full list of videos used in the experiments is available on the <a href="https://github.com/Goluck-Konuko/dac.git">GitHub page</a> 
-              of the paper. The region of interest is cropped with a resolution of 256x256 with speakers' faces comprising 75% of the frame. 
+            Deep generative models, and particularly facial animation schemes, 
+            can be used in video conferencing applications to efficiently compress 
+            a video through a sparse set of keypoints, 
+            without the need to transmit dense motion vectors. 
           </p>
-          <div class="text-center" style="display: grid; grid-template-columns: 20% 20% 20% 20% 20%; margin-top: 5pt;">
-            <h3 style="font-size: medium;">Original Video</h3>
-            <h3 style="font-size: medium;">HEVC <span style="color: crimson;">(>50 Kbps)</span></h3>
-            <h3 style="font-size: medium;">HEVC <span style="color: crimson;">(~10 Kbps)</span></h3>
-            <h3 style="font-size: medium;">Ours <span style="color: blue;">(~10 Kbps)</span></h3>
-            <h3 style="font-size: medium;">Ours <span style="color: blue;">(~1.5 Kbps)</span></h3>
-          </div>
-          <video src="assets/all_comp_xiph.mp4" width="100%" height="100%" autoplay controls loop></video>
+          <p>
+            While these schemes bring significant coding gains over conventional video codecs 
+            at low bitrates, their performance saturates quickly when the available bandwidth 
+            increases.  In this paper, we propose a layered, 
+            hybrid coding scheme to overcome this limitation. 
+            Specifically, we extend a codec based on facial animation by adding an auxiliary 
+            stream consisting of a very low bitrate version of the video, 
+            obtained through a conventional video codec (e.g., HEVC). 
+          </p>
+          <p>
+            The animated and auxiliary videos are combined through a novel fusion module. 
+            Our results show consistent average BD-Rate gains in excess of -30% 
+            on a large dataset of video conferencing sequences, 
+            extending the operational range of bitrates of a facial animation codec alone. 
+          </p>
         </div>
-        
-        <!-- <div class="accordion" id="accordionExample">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                VoxCeleb
-              </button>
-            </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingTwo">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Xiph.org
-              </button>
-            </h2>
-            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                <div class="text-center" style="display: grid; grid-template-columns: 20% 20% 20% 20% 20%;">
-                  <h3 style="font-size: medium;">Original Video</h3>
-                  <h3 style="font-size: medium;">HEVC (>50 Kbps)</h3>
-                  <h3 style="font-size: medium;">HEVC (~10 Kbps)</h3>
-                  <h3 style="font-size: medium;">Ours (~10 Kbps)</h3>
-                  <h3 style="font-size: medium;">Ours (~1.5 Kbps)</h3>
-                </div>
-                <video src="assets/all_comp_xiph.mp4" width="100%" height="100%" autoplay controls loop></video> 
-              </div>
-            </div>
-          </div>
-        </div> -->
-      </article><!-- /.blog-post -->
+      </div>
+    </div>
+    <!--/ Abstract. -->
 
-      <article class="blog-post">
-        <h2 class="blog-post-title">Quantitative Results</h2>
-        <p>
-          We compare our approach with the <a href="https://github.com/listenlink/HM"><strong>standard HM 16 (HEVC) low delay configuration</strong></a> by 
-          by performing subjective test on 10 videos (8 from Voxceleb and 2 from Xiph.org) using Amazon Mechanical Turk (AMT).
-          Each sequence is encoded using 8 different bite-rate configurations (4 with HEVC, 4 with proposed method) ranging from 5Kbps to 55Kbps. 
-          We implement a simple Double Stimulus Impairment Scale (DSIS) test  interface in AMT.
-        </p>
-        <div class="row" >
-          <div class="col-4">
-            <img src="assets/rd/mos_bt_full_3.png" width="100%" height="300px" alt="mean opinion score and confidence interval"/>
-          </div>
-          <div class="col-4" style="padding-top: 15pt; font-size: 11pt;">
-            <table class="table text-center">
-              <col>
-              <colgroup span="2"></colgroup>
-              <colgroup span="2"></colgroup>
-              <tr>
-                <td rowspan="2"></td>
-                <th colspan="2" scope="colgroup">VoxCeleb</th>
-                <th colspan="2" scope="colgroup">Xiph.org</th>
-              </tr>
-              <tr>
-                <th scope="col">BD quality</th>
-                <th scope="col">BD rate</th>
-                <th scope="col">BD quality</th>
-                <th scope="col">BD rate</th>
-              </tr>
-              <tr>
-                <th scope="row">PSNR</th>
-                <td>2.88</td>
-                <td>65.50</td>
-                <td>3.14</td>
-                <td>72.44</td>
-              </tr>
-              <tr>
-                <th scope="row">MS-SSIM</th>
-                <td>0.070</td>
-                <td>83.96</td>
-                <td>0.075</td>
-                <td>86.41</td>
-              </tr>
-              <tr>
-                <th scope="row">VIF</th>
-                <td>0.027</td>
-                <td>72.29</td>
-                <td>0.021</td>
-                <td>68.02</td>
-              </tr>
-              <tr>
-                <th scope="row">VMAF</th>
-                <td>37.43</td>
-                <td>82.29</td>
-                <td>31.04</td>
-                <td>83.44</td>
-              </tr>
-              
-
-              <!-- \textbf{PSNR}& 0.92/0.95& 0.77/0.92\\
-\textbf{SSIM}& 0.91/0.74& 0.80/0.67\\
-\textbf{MS-SSIM}& 0.94/0.95 & 0.84/0.95\\
-\textbf{VIF} & 0.38/0.75 & 0.28/0.75\\
-\textbf{VMAF}& 0.94/0.96 & 0.80/0.89\\ -->
-            </table>
-          </div>
-          <div class="col-4" style="padding-top: 15pt; font-size: 11pt;">
-            <table class="table text-center">
-              <col>
-              <colgroup span="2"></colgroup>
-              <colgroup span="2"></colgroup>
-              <tr>
-                <td rowspan="2"></td>
-                <th colspan="2" scope="colgroup">PCC</th>
-                <th colspan="2" scope="colgroup">SROCC</th>
-              </tr>
-              <tr>
-                <th scope="col">BD quality</th>
-                <th scope="col">BD rate</th>
-                <th scope="col">BD quality</th>
-                <th scope="col">BD rate</th>
-              </tr>
-              <tr>
-                <th scope="row">PSNR</th>
-                <td>0.92</td>
-                <td>0.95</td>
-                <td>0.77</td>
-                <td>0.92</td>
-              </tr>
-              <tr>
-                <th scope="row">MS-SSIM</th>
-                <td>0.94</td>
-                <td>0.95</td>
-                <td>0.84</td>
-                <td>0.95</td>
-              </tr>
-              <tr>
-                <th scope="row">VIF</th>
-                <td>0.38</td>
-                <td>0.75</td>
-                <td>0.28</td>
-                <td>0.75</td>
-              </tr>
-              <tr>
-                <th scope="row">VMAF</th>
-                <td>0.94</td>
-                <td>0.96</td>
-                <td>0.80</td>
-                <td>0.89</td>
-              </tr>
-              </table>
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="#"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
-        <p>
-          The Mean Opinion Score computed over a 95% confidence interval shows that our approach clearly outperforms HEVC 
-          (average BD-MOS = 1.68, BD-rate = -82.35\%). 
-          We further determined the Pearson Correlation Coefficient (PCC) and 
-          the Spearman  Rank-Order  Correlation  Coefficient (SROCC) between MOS and 
-          five commonly used quality metrics, for our codec and HEVC. 
-          We observe that, except VIF, these metrics correlate well with human judgment, at least on the tested data. 
-          Based on these preliminary results, we proceed with an extensive performance evaluation of the proposed method using these quality metrics.</p>
-      </article><!-- /.blog-post -->
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      <!-- Image Animation. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Image Animation</h2>
+          <p>
+            Basics of image animation with unsupervised keypoints and dense motion prediction.
+          </p>
+          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+            <!-- <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/dollyzoom-stacked.mp4"
+                    type="video/mp4"> -->
+          </video>
+        </div>
+      </div>
+      <!--/ Visual Effects. -->
+
+      <!-- Scalable Base Layer. -->
+      <div class="column">
+        <h2 class="title is-3">Enhancement Layer</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p>
+              Low-latency, low quality enhancement stream using the HEVC codec.
+            </p>
+            <video id="matting-video" controls playsinline height="100%">
+              <!-- <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/matting.mp4"
+                      type="video/mp4"> -->
+            </video>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!--/ enhancement layer. -->
+
+    <!-- Animation. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-4">Hybrid - Deep Animation Coding (DAC)</h2>
+
+        <!-- Qualitative Evaluation. -->
+        <h3 class="title is-4"></h3>
+        <div class="content has-text-justified">
+          <p>
+            Animation-based coding with the scalable enhancement layer
+          </p>
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-3 has-text-centered">
+            <img src="#"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+            <p>Original</p>
+          </div>
+          <div class="column is-3 has-text-centered">
+            <img src="#"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+            <p>HEVC</p>
+          </div>
+          <div class="column is-3 has-text-centered">
+            <img src="#"
+                 class="interpolation-image"
+                 alt="subjective evaluation curve."/>
+            <p>DAC</p>
+          </div>
+          <div class="column is-3 has-text-centered">
+            <img src="#"
+                 class="interpolation-image"
+                 alt="table with PCC and ROCC."/>
+            <p class="is-bold">H-DAC</p>
+          </div>
+        </div>
+        <br/>
+        <!--/ DAC. -->
+        <!-- Quantitative. -->
+        <h3 class="title is-4"></h3>
+        <div class="content has-text-justified">
+          <p>
+            Quantitative measures for ultra-low bitrate video coding
+          </p>
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-3 has-text-centered">
+            <img src="#"
+                  class="interpolation-image"
+                  alt="Interpolate start reference image."/>
+            <p>Rate-Distortion Curve</p>
+          </div>
+          <div class="column is-3 has-text-centered">
+            <img src="#"
+                  class="interpolation-image"
+                  alt="subjective evaluation curve."/>
+            <p>Subjective Evaluation</p>
+          </div>
+          <div class="column is-3 has-text-centered">
+            <img src="#"
+                  class="interpolation-image"
+                  alt="table with PCC and ROCC."/>
+            <p class="is-bold">Metric Correlation Performance</p>
+          </div>
+        </div>
+        <br/>
+
+
+      </div>
 
     </div>
-  </div><!-- /.row -->
+    <!--/ Animation. -->
 
-</main><!-- /.container -->
 
-<footer class="blog-footer">
-  <p>
-    <a href="#">Back to top</a>
-  </p>
-</footer> 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
-  </body>
+    <!-- Concurrent Work. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            There is a number of works released concurrent or subsequent to our initial work in the domain of animation-based video communication. 
+            They provide valuable insight into computer-vision and model optimization aspects that
+            could inspire great curiousity into this line of work.
+          </p>
+          <p>
+            <a href="https://nvlabs.github.io/face-vid2vid/">Face-vid2vid:</a> Proposes a neural talking-head video synthesis model with novel-view rendering capability and demonstrates its application to video conferencing.
+          </p>
+          <p>
+            <a href="https://arxiv.org/abs/2012.00328">Motion-SPADE</a> Explores quality and bandwidth trade-offs for approaches based on static landmarks, dynamic landmarks or segmentation maps for image animation and proposes designs for mobile-compatible model architecture for low-latency chat applications.
+          </p>
+          <p>
+            <a href="https://github.com/alibaba-edu/temporal-evolution-inference-with-compact-feature-representation-for-talking-face-video-compression">Beyond Keypoint Coding: Temporal Evolution Inference with Compact Feature Representation for Talking Face Video Compression</a>
+            Proposes a novel sparse representation for animation-based coding. We updated our own keypoint quantization and entropy coding processes to match those used by this work.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Concurrent Work. -->
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{konuko2022hdac,
+  author    = {Konuko, Goluck and Lathuilière, Stéphane and Valenzise, Giuseppe},
+  title     = {H-DAC: Hybrid coding with Deep Animation Models for Ultra-Low Bitrate Video Conferencing},
+  journal   = {ICIP},
+  year      = {2022},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="#">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/Goluck-Konuko" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <!-- <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
 </html>

@@ -273,7 +273,7 @@
     <!--/ Abstract. -->
 
     <!-- Paper video. -->
-    <div class="columns is-centered has-text-centered">
+    <!-- <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Video</h2>
         <div class="publication-video">
@@ -281,7 +281,7 @@
                   frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
       </div>
-    </div>
+    </div> -->
     <!--/ Paper video. -->
   </div>
 </section>
@@ -293,22 +293,22 @@
     <div class="columns is-centered">
 
       <!-- Image Animation. -->
-      <div class="column">
+      <!-- <div class="column">
         <div class="content">
           <h2 class="title is-3">Image Animation</h2>
           <p>
             Basics of image animation with unsupervised keypoints and dense motion prediction.
           </p>
           <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-            <!-- <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/dollyzoom-stacked.mp4"
-                    type="video/mp4"> -->
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/dollyzoom-stacked.mp4"
+                    type="video/mp4">
           </video>
         </div>
-      </div>
+      </div> -->
       <!--/ Visual Effects. -->
 
       <!-- Scalable Base Layer. -->
-      <div class="column">
+      <!-- <div class="column">
         <h2 class="title is-3">Enhancement Layer</h2>
         <div class="columns is-centered">
           <div class="column content">
@@ -316,58 +316,85 @@
               Low-latency, low quality enhancement stream using the HEVC codec.
             </p>
             <video id="matting-video" controls playsinline height="100%">
-              <!-- <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/matting.mp4"
-                      type="video/mp4"> -->
+              <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/matting.mp4"
+                      type="video/mp4">
             </video>
           </div>
 
         </div>
-      </div>
+      </div> -->
     </div>
     <!--/ enhancement layer. -->
 
     <!-- Animation. -->
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-4">Hybrid - Deep Animation Coding (DAC)</h2>
+        <h2 class="title is-4">Visual Results</h2>
 
         <!-- Qualitative Evaluation. -->
         <h3 class="title is-4"></h3>
         <div class="content has-text-justified">
+
           <p>
-            Animation-based coding with the scalable enhancement layer
+          <a href="https://hevc.hhi.fraunhofer.de/HM-doc/">HEVC</a> - Low latency HEVC configuration of the reference HM TEST MODEL 
           </p>
+
+          <p>
+            <a href="https://ieeexplore.ieee.org/document/9414731">DAC</a> - Our original deep animation codec 
+          </p>
+
+          <p>
+            <a href="#">H-DAC</a>- Animation-based coding with the scalable enhancement layer
+          </p>
+          
         </div>
-        <div class="columns is-vcentered interpolation-panel">
-          <div class="column is-3 has-text-centered">
-            <img src="#"
-                 class="interpolation-image"
-                 alt="Interpolate start reference image."/>
-            <p>Original</p>
+        <div style="display: flex; flex-direction: row">
+          <div style="margin: 0px 10px 0px 30px">
+            <h3>Reference</h3>
           </div>
-          <div class="column is-3 has-text-centered">
-            <img src="#"
-                 class="interpolation-image"
-                 alt="Interpolate start reference image."/>
-            <p>HEVC</p>
+          <div style="margin: 0px 10px 0px 60px">
+            <h3>Reference+KP</h3>
           </div>
-          <div class="column is-3 has-text-centered">
-            <img src="#"
-                 class="interpolation-image"
-                 alt="subjective evaluation curve."/>
-            <p>DAC</p>
+          <div style="margin: 0px 10px 0px 50px">
+            <h3>Target+KP</h3>
           </div>
-          <div class="column is-3 has-text-centered">
-            <img src="#"
-                 class="interpolation-image"
-                 alt="table with PCC and ROCC."/>
-            <p class="is-bold">H-DAC</p>
+          <div style="margin: 0px 10px 0px 70px">
+            <h3>HEVC(~10kbps)</h3>
+          </div>
+          <div style="margin: 0px 10px 0px 40px">
+            <h3>DAC(~10kbps)</h3>
+          </div>
+          <div style="margin: 0px 10px 0px 50px">
+            <h3>HDAC(~10kbps)</h3>
           </div>
         </div>
-        <br/>
-        <!--/ DAC. -->
+        <div class="column has-text-centered">
+          
+          <video id="matting-video" controls playsinline height="100%" autoplay loop>
+            <source src="static/videos/vid_1.mp4" type="video/mp4" >
+          </video>
+        </div>
+        <div class="column has-text-centered">
+          
+          <video id="matting-video" controls playsinline height="100%" autoplay loop>
+            <source src="static/videos/vid_2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column has-text-centered">
+          
+          <video id="matting-video" controls playsinline height="100%" autoplay loop>
+            <source src="static/videos/vid_3.mp4" type="video/mp4" >
+          </video>
+        </div>
+        <div class="column has-text-centered">
+          
+          <video id="matting-video" controls playsinline height="100%" autoplay loop>
+            <source src="static/videos/vid_4.mp4" type="video/mp4">
+          </video>
+        </div>
+
         <!-- Quantitative. -->
-        <h3 class="title is-4"></h3>
+        <!-- <h3 class="title is-4"></h3>
         <div class="content has-text-justified">
           <p>
             Quantitative measures for ultra-low bitrate video coding
@@ -393,7 +420,7 @@
             <p class="is-bold">Metric Correlation Performance</p>
           </div>
         </div>
-        <br/>
+        <br/> -->
 
 
       </div>
@@ -413,6 +440,7 @@
             They provide valuable insight into computer-vision and model optimization aspects that
             could inspire great curiousity into this line of work.
           </p>
+          
           <p>
             <a href="https://nvlabs.github.io/face-vid2vid/">Face-vid2vid:</a> Proposes a neural talking-head video synthesis model with novel-view rendering capability and demonstrates its application to video conferencing.
           </p>

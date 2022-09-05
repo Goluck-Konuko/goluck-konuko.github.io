@@ -196,11 +196,25 @@
 <section class="section">
   <div class="container is-max-desktop">
     <!--/ enhancement layer. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width" >
+        <h2 class="title is-4" style="text-align:center">Coding Framework</h2>
+        <p>A conventional video codec (light red module) is used on both encoder and 
+          decoder sides to transmit the input video with a very low bitrate.
+          The animation module provides to the decoder the initial frame of the video and the facial keypoints
+           that describe the motion between the initial frame and the current frame.
+           A multi-scale fusion module combines the low-quality video provided by the conventional video codec
+           with the output of the image animation module to generate the output frame.
+        </p>
+
+        <img src="static/coding_pipeline.png" alt="coding Framework"/>
+      </div>
+    </div>
 
     <!-- Animation. -->
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-4">Visual Results</h2>
+        <h2 class="title is-4" style="text-align:center">Visual Results</h2>
 
         <!-- Qualitative Evaluation. -->
         <h3 class="title is-4"></h3>
@@ -222,23 +236,24 @@
           </p>
           
         </div>
+        
         <div style="display: flex; flex-direction: row">
-          <div style="margin: 0px 10px 0px 30px">
+          <div style="margin: 0px 10px 0px 40px">
             <h3>Reference</h3>
           </div>
-          <div style="margin: 0px 10px 0px 60px">
-            <h3>Reference+KP</h3>
-          </div>
-          <div style="margin: 0px 10px 0px 50px">
+          <div style="margin: 0px 10px 0px 70px">
             <h3>Target+KP</h3>
           </div>
           <div style="margin: 0px 10px 0px 70px">
-            <h3>HEVC(~10kbps)</h3>
-          </div>
-          <div style="margin: 0px 10px 0px 40px">
-            <h3>DAC(~10kbps)</h3>
+            <h3>HEVC(~5kbps)</h3>
           </div>
           <div style="margin: 0px 10px 0px 50px">
+            <h3>DAC(~5kbps)</h3>
+          </div>
+          <div style="margin: 0px 10px 0px 30px">
+            <h3>HEVC(~10kbps)</h3>
+          </div>
+          <div style="margin: 0px 10px 0px 30px">
             <h3>HDAC(~10kbps)</h3>
           </div>
         </div>
@@ -260,39 +275,45 @@
             <source src="static/videos/vid_3.mp4" type="video/mp4" >
           </video>
         </div>
-        <div class="column has-text-centered">
-          
-          <video id="matting-video" controls playsinline height="100%" autoplay loop>
-            <source src="static/videos/vid_4.mp4" type="video/mp4">
-          </video>
+        <div>
+          <p>The DAC uses the reference frame and the keypoints extracted from the target frames to 
+            reconstruct the output video. 
+            The HDAC uses the Reference frame, keypoints from the target frames and 
+            the base layer frame encoded by HEVC at 5kbps. At comparable bitrates, the DAC and HDAC both outperform HEVC in the 
+          output perceptual quality. </p>
         </div>
-
-        <div class="columns is-centered">
-
+        <div class="columns is-centered" style="margin-top: 30px;">
           <!-- Image Animation. -->
           <div class="column">
             <div class="content">
-              <h2 class="title is-3">Quantitative Metrics</h2>
+              <h2 class="title is-3" style="text-align:center">Quantitative Metrics</h2>
+              <p>
+                At very low bitrates, the animation based coding framework outperform HEVC on all image quality metrics considered.
+                 However, whereas the DAC framework has a lower range of quality scalability i.e. after 25kbps, it performs worse than the HEVC codec, using the base layer increases the range to about 70kbps for the HDAC.
+              </p>
               <div style="display: flex;">
               
-                <div class="column is-4 has-text-centered">
+                <div class="column is-6 has-text-centered">
                   <img src="static/rd_psnr.png"
                         class="interpolation-image"
                         alt="PSNR RD Curve"/>
                   <!-- <p>Rate-Distortion Curve</p> -->
                 </div>
-                <div class="column is-4 has-text-centered">
+                <div class="column is-6 has-text-centered">
                   <img src="static/rd_ms_ssim.png"
                         class="interpolation-image"
                         alt="MS-SSIM RD Curve"/>
                   <!-- <p>Rate-Distortion Curve</p> -->
                 </div>
-                <div class="column is-4 has-text-centered">
+                <!-- <div class="column is-4 has-text-centered">
                   <img src="static/rd_perp.png"
                         class="interpolation-image"
                         alt="MS-SSIM RD Curve"/>
-                  <!-- <p>Rate-Distortion Curve</p> -->
-                </div>
+                   <p>Rate-Distortion Curve</p> -->
+                <!-- </div> -->
+              </div>
+              <div>
+                <p>Over the low bitrate range, the HDAC framework achieves over 30% bitrate savings over the HEVC codec as shown in the table below:</p>
               </div>
               <div class ="title is-3 has-text-centered" style="margin:20px 0 20px 0; font-size:16px">
                 <table>
@@ -334,7 +355,7 @@
     <!-- Concurrent Work. -->
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
+        <h2 class="title is-3" style="text-align:center">Related Links</h2>
 
         <div class="content has-text-justified">
           <p>

@@ -1,14 +1,33 @@
-# H-DAC
+# Animation-Based Coding for Video Conferencing
 
-This is the repository that contains source code for the [H-DAC website](https://dac.github.io).
+This is the repository that contains source code for the [DAC, HDAC, RDAC](https://dac.github.io).
 
-If you find H-DAC useful for your work please cite:
+If you find this work useful for your work please cite:
+
 ```
-@article{konuko2022dac
+@inproceedings{konuko2021dac,
+  author={Konuko, Goluck and Valenzise, Giuseppe and Lathuilière, Stéphane},
+  booktitle={ICASSP 2021 - 2021 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)}, 
+  title={Ultra-Low Bitrate Video Conferencing Using Deep Image Animation}, 
+  year={2021},
+  pages={4210-4214},
+  doi={10.1109/ICASSP39728.2021.9414731}}
+```
+
+```
+@article{konuko2022hdac
   author    = {Konuko, Goluck and Lathuili`ere, Ste'phane and Valenzise, Giuseppe},
   title     = {H-DAC: Hybrid Deep Animation Codec for Low-Bitrate Video Conferencing},
   journal   = {ICIP},
   year      = {2022},
+}
+```
+```
+@article{konuko2023rdac
+  author    = {Konuko, Goluck and Lathuili`ere, Ste'phane and Valenzise, Giuseppe},
+  title     = {Predictive Coding for Animation-Based Video Compression},
+  journal   = {ICIP},
+  year      = {2023},
 }
 ```
 

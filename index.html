@@ -63,15 +63,19 @@
           More Research
         </a>
         <div class="navbar-dropdown">
-          <a class="navbar-item" href="hdac.html">
-            HDAC
+            <a class="navbar-item" href="index.html">
+                HOME
+              </a>
+              <!-- <a class="navbar-item" href="hdac.html">
+                HDAC
+              </a> -->
+              
+          <!--<a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
           </a>
-          <a class="navbar-item" href="rdac.html">
-            RDAC
-          </a>
-          <a class="navbar-item" href="#">
-            SDAC - Coming Soon
-          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a> -->
         </div>
       </div>
     </div>
@@ -85,7 +89,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Deep Animation Models for Ultra-Low Bitrate Video Conferencing</h1>
+          <h1 class="title is-1 publication-title">RDAC: Predictive Coding for Animation-Based Video Compression</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://l2s.centralesupelec.fr/u/konuko-goluck/">Goluck Konuko</a><sup>1</sup>,</span>
@@ -106,7 +110,7 @@
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="./static/paper.pdf" download="ICIP_2022_hybrid_deep_animation_coding.pdf"
+                <a href="#"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -115,7 +119,7 @@
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2207.13530" target="_blank"
+                <a href="#"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -141,13 +145,12 @@
                       <i class="fab fa-github"></i>
                   </span>
                   <span>Code</span>
-                  <span>Code</span>
                   </a>
               </span>
               <!-- Dataset Link. -->
               <span class="link-block">
-                <a href="https://drive.google.com/drive/folders/1QXuKGo7YjklZpKDViLUc3VnI7Odd-vaE?usp=sharing" target="_blank"
-                   class="external-link button is-normal is-rounded is-dark"> 
+                <a href="https://drive.google.com/drive/folders/1QXuKGo7YjklZpKDViLUc3VnI7Odd-vaE?usp=sharing"
+                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="far fa-images"></i>
                   </span>
@@ -162,9 +165,6 @@
   </div>
 </section>
 
-
-
-
 <section class="section">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
@@ -172,27 +172,16 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
-          <p>
-            Deep generative models, and particularly facial animation schemes, 
-            can be used in video conferencing applications to efficiently compress 
-            a video through a sparse set of keypoints, 
-            without the need to transmit dense motion vectors. 
-          </p>
-          <p>
-            While these schemes bring significant coding gains over conventional video codecs 
-            at low bitrates, their performance saturates quickly when the available bandwidth 
-            increases.  In this paper, we propose a layered, 
-            hybrid coding scheme to overcome this limitation. 
-            Specifically, we extend a codec based on facial animation by adding an auxiliary 
-            stream consisting of a very low bitrate version of the video, 
-            obtained through a conventional video codec (e.g., HEVC). 
-          </p>
-          <p>
-            The animated and auxiliary videos are combined through a novel fusion module. 
-            Our results show consistent average BD-Rate gains in excess of -30% 
-            on a large dataset of video conferencing sequences, 
-            extending the operational range of bitrates of a facial animation codec alone. 
-          </p>
+          <p>We address the problem of efficiently compressing video for conferencing-type applications.
+             We build on recent approaches based on image animation, 
+             which can achieve good reconstruction quality at very low bitrate by representing face motions with a compact set of sparse keypoints. However, these methods encode video in a frame-by-frame fashion, i.e., each frame is reconstructed from a reference frame,
+             which limits the reconstruction quality when the bandwidth is larger.</p> 
+          <p>Instead, we propose a predictive coding scheme which uses image animation as a predictor, 
+            and codes the residual with respect to the actual target frame. 
+            The residuals can be in turn coded in a predictive manner, thus removing efficiently temporal dependencies.</p>
+          <p>Our experiments indicate a significant efficiency gain at low bitrates, 
+            in excess of 70% compared to the HEVC video standard and over 30% compared to VVC, 
+            on a dataset of talking-head videos.</p>
         </div>
       </div>
     </div>
@@ -215,26 +204,28 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <!--/ enhancement layer. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width" >
-        <h2 class="title is-4" style="text-align:center">Coding Framework</h2>
-        <p>A conventional video codec (light red module) is used on both encoder and 
-          decoder sides to transmit the input video with a very low bitrate.
-          The animation module provides to the decoder the initial frame of the video and the facial keypoints
-           that describe the motion between the initial frame and the current frame.
-           A multi-scale fusion module combines the low-quality video provided by the conventional video codec
-           with the output of the image animation module to generate the output frame.
-        </p>
 
-        <img src="static/coding_pipeline.png" alt="coding Framework"/>
+  <div class="columns is-centered">
+      <div class="column">
+      <div class="content">
+        <h2 class="title is-3">Proposed Coding Framework</h2>
+        <p>
+          A general scheme of the proposed residual deep animation codec. 
+          The components of the proposed system include:
+          <ul>
+            <li>Frame prediction by animation</li>
+            <li>Low bitrate spatial residual coder</li>
+            <li>Low bitrate temporal residual coder</li>
+          </ul> 
+        </p>
+        <img src="static/rdac.png" alt="rdac coding framework"/>
       </div>
     </div>
-
-    <!-- Animation. -->
+    </div>
+    <!-- Qualitative -->
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-4" style="text-align:center">Visual Results</h2>
+        <h2 class="title is-4">Visual Results</h2>
 
         <!-- Qualitative Evaluation. -->
         <h3 class="title is-4"></h3>
@@ -243,139 +234,376 @@
           <p>
           <a href="https://hevc.hhi.fraunhofer.de/HM-doc/">HEVC</a> - Low latency HEVC configuration of the reference HM TEST MODEL 
           </p>
-          <p>
-            <a href="https://hevc.hhi.fraunhofer.de/HM-doc/">VVC</a> - VVC-VTM TEST model with low-latency configuration.
-            </p>
 
           <p>
-            <a href="https://ieeexplore.ieee.org/document/9414731">DAC</a> - Our original deep animation codec with adpative refresh for quality enhancement
+            <a href="https://ieeexplore.ieee.org/document/9414731">DAC</a> - Our original deep animation codec 
           </p>
 
           <p>
-            <a href="#">H-DAC</a>- Animation-based coding with the scalable-quality base layer
+            <a href="https://arxiv.org/abs/2207.13530v1">H-DAC</a>- Animation-based coding with the scalable base layer coded with HEVC
+          </p>
+
+          <p>
+            <a href="https://arxiv.org/abs/2307.04187">RDAC</a>- Predictive coding framework with animation and spatio-temporal residual learning
           </p>
           
-        </div>
-        
-        <div style="display: flex; flex-direction: row">
-          <div style="margin: 0px 10px 0px 40px">
-            <h3>Reference</h3>
+        </div>   
+        <div>   
+        <div style="display: flex; flex-direction: row; background-color: antiquewhite;">
+          <div style="margin: 0px 10px 0px 0px">
+            <h3></h3>
           </div>
-          <div style="margin: 0px 10px 0px 70px">
-            <h3>Target+KP</h3>
-          </div>
-          <div style="margin: 0px 10px 0px 70px">
-            <h3>HEVC(~5kbps)</h3>
-          </div>
-          <div style="margin: 0px 10px 0px 50px">
-            <h3>DAC(~5kbps)</h3>
-          </div>
-          <div style="margin: 0px 10px 0px 30px">
-            <h3>HEVC(~10kbps)</h3>
-          </div>
-          <div style="margin: 0px 10px 0px 30px">
-            <h3>HDAC(~10kbps)</h3>
+          <div style="margin: 0 10px 0px 50%; color: red;">
+            <h3> ~ 5 - 10 Kbps</h3>
           </div>
         </div>
-        <div class="column has-text-centered">
-          
-          <video id="matting-video" controls playsinline height="100%" autoplay loop>
-            <source src="static/videos/vid_one.mp4" type="video/mp4" >
-          </video>
+        <div class="tab">
+          <button class="tablinks_1" onclick="openTab_1(event, 'example_1')" id="defaultOpen">Example 1</button>
+          <button class="tablinks_1" onclick="openTab_1(event, 'example_2')">Example 2</button>
+          <button class="tablinks_1" onclick="openTab_1(event, 'example_3')">Example 3</button>
+          <button class="tablinks_1" onclick="openTab_1(event, 'example_4')">Example 4</button>
+          <button class="tablinks_1" onclick="openTab_1(event, 'example_5')">Example 5</button>
         </div>
-        <div class="column has-text-centered">
-          
-          <video id="matting-video" controls playsinline height="100%" autoplay loop>
-            <source src="static/videos/vid_two.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="column has-text-centered">
-          
-          <video id="matting-video" controls playsinline height="100%" autoplay loop>
-            <source src="static/videos/vid_three.mp4" type="video/mp4" >
-          </video>
-        </div>
-        <div>
-          <p>The DAC uses the reference frame and the keypoints extracted from the target frames to 
-            reconstruct the output video. 
-            The HDAC uses the Reference frame, keypoints from the target frames and 
-            the base layer frame encoded by HEVC at 5kbps. At comparable bitrates, the DAC and HDAC both outperform HEVC in the 
-          output perceptual quality. </p>
-        </div>
-        <div class="columns is-centered" style="margin-top: 30px;">
-          <!-- Image Animation. -->
-          <div class="column">
-            <div class="content">
-              <h2 class="title is-3" style="text-align:center">Quantitative Metrics</h2>
-              <p>
-                At very low bitrates, the animation based coding framework outperform HEVC on all image quality metrics considered.
-                 However, whereas the DAC framework has a lower range of quality scalability i.e. after 25kbps, it performs worse than the HEVC codec, using the base layer increases the range to about 70kbps for the HDAC.
-              </p>
-              <div style="display: flex;">
-              
-                <div class="column is-6 has-text-centered">
-                  <img src="static/rd_psnr.png"
-                        class="interpolation-image"
-                        alt="PSNR RD Curve"/>
-                  <!-- <p>Rate-Distortion Curve</p> -->
-                </div>
-                <div class="column is-6 has-text-centered">
-                  <img src="static/rd_ms_ssim.png"
-                        class="interpolation-image"
-                        alt="MS-SSIM RD Curve"/>
-                  <!-- <p>Rate-Distortion Curve</p> -->
-                </div>
-                <!-- <div class="column is-4 has-text-centered">
-                  <img src="static/rd_perp.png"
-                        class="interpolation-image"
-                        alt="MS-SSIM RD Curve"/>
-                   <p>Rate-Distortion Curve</p> -->
-                <!-- </div> -->
-              </div>
-              <div>
-                <p>Over the low bitrate range, the HDAC framework achieves over 30% bitrate savings over the HEVC codec as shown in the table below:</p>
-              </div>
-              <div class ="title is-3 has-text-centered" style="margin:20px 0 20px 0; font-size:16px">
-                <table>
-                  <tr>
-                    <th></th>
-                    <th>HEVC </th>
-                    <th>VVC</th>
-                  </tr>
-                  <tr>
-                    <th></th>
-                    <th>BD Quality / BD Rate </th>
-                    <th>BD Quality / BD Rate</th>
-                  </tr>
-                  <tr>
-                    <td>PSNR</td>
-                    <td>1.07 / -33.36</td>
-                    <td>0.97 / -30.7</td>
-                  </tr>
-                  <tr>
-                    <td>MS-SSIM</td>
-                    <td>0.02 / -33.41 </td>
-                    <td>0.02 / -28.33 </td>
-                  <tr>
-                    <td>msVGG</td>
-                    <td>-19.6 / -48.84 </td>
-                    <td>-20.04 / -41.64</td>
-                  </tr>
-                </table> 
-              </div>
+        <div id="example_1" class="tabcontent_1" >
+          <div style="display: flex; flex-direction: row">
+            <div style="text-align: center; width: 25%;">
+              <h3><strong>Ground Truth</strong></h3>
+            </div>
+            <div style="text-align: center; width: 25%;">
+              <h3><strong>HEVC</strong></h3>
+            </div>
+            <div style="text-align: center;width: 25%;">
+              <h3><strong>DAC</strong></h3>
+            </div>
+            <div style="text-align: center;width: 25%;">
+              <h3><strong>RDAC</strong></h3>
             </div>
           </div>
-
+          <div style="display: flex; flex-direction: row">
+            <div class="column has-text-centered" style="text-align: center; width: 100%;">
+              <video id="matting-video" controls playsinline height="100%" autoplay loop>
+                <source src="static/videos/5_10_kbps/1.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
         </div>
- 
+
+        <div id="example_2" class="tabcontent_1" >
+          <div style="display: flex; flex-direction: row">
+            <div style="text-align: center; width: 25%;">
+              <h3><strong>Ground Truth</strong></h3>
+            </div>
+            <div style="text-align: center; width: 25%;">
+              <h3><strong>HEVC</strong></h3>
+            </div>
+            <div style="text-align: center;width: 25%;">
+              <h3><strong>DAC</strong></h3>
+            </div>
+            <div style="text-align: center;width: 25%;">
+              <h3><strong>RDAC</strong></h3>
+            </div>
+          </div>
+          <div class="column has-text-centered" style="text-align: center; width: 100%;">
+            <video id="matting-video" controls playsinline height="100%" autoplay loop>
+              <source src="static/videos/5_10_kbps/2.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+
+        <div id="example_3" class="tabcontent_1" >
+          <div style="display: flex; flex-direction: row">
+            <div style="text-align: center; width: 25%;">
+              <h3><strong>Ground Truth</strong></h3>
+            </div>
+            <div style="text-align: center; width: 25%;">
+              <h3><strong>HEVC</strong></h3>
+            </div>
+            <div style="text-align: center;width: 25%;">
+              <h3><strong>DAC</strong></h3>
+            </div>
+            <div style="text-align: center;width: 25%;">
+              <h3><strong>RDAC</strong></h3>
+            </div>
+          </div>
+          <div class="column has-text-centered" style="text-align: center; width: 100%;">
+            <video id="matting-video" controls playsinline height="100%" autoplay loop>
+              <source src="static/videos/5_10_kbps/3.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        
+        <div id="example_4" class="tabcontent_1" >
+          <div style="display: flex; flex-direction: row">
+            <div style="text-align: center; width: 25%;">
+              <h3><strong>Ground Truth</strong></h3>
+            </div>
+            <div style="text-align: center; width: 25%;">
+              <h3><strong>HEVC</strong></h3>
+            </div>
+            <div style="text-align: center;width: 25%;">
+              <h3><strong>DAC</strong></h3>
+            </div>
+            <div style="text-align: center;width: 25%;">
+              <h3><strong>RDAC</strong></h3>
+            </div>
+          </div>
+          <div class="column has-text-centered" style="text-align: center; width: 100%;">
+            <video id="matting-video" controls playsinline height="100%" autoplay loop>
+              <source src="static/videos/5_10_kbps/4.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        
+        <div id="example_5" class="tabcontent_1" >
+          <div style="display: flex; flex-direction: row">
+          <div style="text-align: center; width: 25%;">
+            <h3><strong>Ground Truth</strong></h3>
+          </div>
+          <div style="text-align: center; width: 25%;">
+            <h3><strong>HEVC</strong></h3>
+          </div>
+          <div style="text-align: center;width: 25%;">
+            <h3><strong>DAC</strong></h3>
+          </div>
+          <div style="text-align: center;width: 25%;">
+            <h3><strong>RDAC</strong></h3>
+          </div>
+          </div>
+          <div class="column has-text-centered" style="text-align: center; width: 100%;">
+            <video id="matting-video" controls playsinline height="100%" autoplay loop>
+              <source src="static/videos/5_10_kbps/6.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div>
+          <p>At very low bitrates (below 10 kbps) the reconstruction quality of RDAC is lower bounded by DAC i.e. the 
+            worst possible quality is that of the frame created by animation only. At this bitrate range, the residual
+            coder is contrained to code only the residual texture and style. Therefore, the reconstructed video does 
+            not have feature level differences with the output of animation-only codec.(DAC). 
+            Our main objective is to preserve the quality of the animated frame at the lowest bitrate range.
+            Subsequently, when additional bitrate is allocated to the predictive residual coder, the output
+            reconstruction quality is improved, a behaviour that is expected from a practical video codec.
+          </p>
+        </div>
+        
+      </div>  
+
+      <div>   
+        <div style="display: flex; flex-direction: row; background-color: antiquewhite;">
+          <div style="margin: 0px 10px 0px 0px">
+            <h3></h3>
+          </div>
+          <div style="margin: 0 10px 0px 50%; color: red;">
+            <h3> ~ 20 - 30 Kbps</h3>
+          </div>
+        </div>
+        <div>
+          <div class="tab">
+            <button class="tablinks_2" onclick="openTab_2(event, 'example_1_1')"  id="defaultOpen_2">Example 1</button>
+            <button class="tablinks_2" onclick="openTab_2(event, 'example_2_1')">Example 2</button>
+            <button class="tablinks_2" onclick="openTab_2(event, 'example_3_1')">Example 3</button>
+            <button class="tablinks_2" onclick="openTab_2(event, 'example_4_1')">Example 4</button>
+            <button class="tablinks_2" onclick="openTab_2(event, 'example_5_1')">Example 5</button>
+          </div>
+
+        <div id="example_1_1" class="tabcontent_2" >
+          <div style="display: flex; flex-direction: row">
+            <div style="text-align: center; width: 25%;">
+              <h3><strong>Ground Truth</strong></h3>
+            </div>
+            <div style="text-align: center; width: 25%;">
+              <h3><strong>HEVC</strong></h3>
+            </div>
+            <div style="text-align: center;width: 25%;">
+              <h3><strong>HDAC</strong></h3>
+            </div>
+            <div style="text-align: center;width: 25%;">
+              <h3><strong>RDAC</strong></h3>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: row">
+            <div class="column has-text-centered" style="text-align: center; width: 100%;">
+              <video id="matting-video" controls playsinline height="100%" autoplay loop>
+                <source src="static/videos/20_30_kbps/1.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <div id="example_2_1" class="tabcontent_2" >
+          <div style="display: flex; flex-direction: row">
+            <div style="text-align: center; width: 25%;">
+              <h3><strong>Ground Truth</strong></h3>
+            </div>
+            <div style="text-align: center; width: 25%;">
+              <h3><strong>HEVC</strong></h3>
+            </div>
+            <div style="text-align: center;width: 25%;">
+              <h3><strong>HDAC</strong></h3>
+            </div>
+            <div style="text-align: center;width: 25%;">
+              <h3><strong>RDAC</strong></h3>
+            </div>
+          </div>
+          <div class="column has-text-centered" style="text-align: center; width: 100%;">
+            <video id="matting-video" controls playsinline height="100%" autoplay loop>
+              <source src="static/videos/20_30_kbps/2.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+
+        <div id="example_3_1" class="tabcontent_2" >
+          <div style="display: flex; flex-direction: row">
+            <div style="text-align: center; width: 25%;">
+              <h3><strong>Ground Truth</strong></h3>
+            </div>
+            <div style="text-align: center; width: 25%;">
+              <h3><strong>HEVC</strong></h3>
+            </div>
+            <div style="text-align: center;width: 25%;">
+              <h3><strong>HDAC</strong></h3>
+            </div>
+            <div style="text-align: center;width: 25%;">
+              <h3><strong>RDAC</strong></h3>
+            </div>
+          </div>
+          <div class="column has-text-centered" style="text-align: center; width: 100%;">
+            <video id="matting-video" controls playsinline height="100%" autoplay loop>
+              <source src="static/videos/20_30_kbps/3.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        
+        <div id="example_4_1" class="tabcontent_2" >
+          <div style="display: flex; flex-direction: row">
+            <div style="text-align: center; width: 25%;">
+              <h3><strong>Ground Truth</strong></h3>
+            </div>
+            <div style="text-align: center; width: 25%;">
+              <h3><strong>HEVC</strong></h3>
+            </div>
+            <div style="text-align: center;width: 25%;">
+              <h3><strong>HDAC</strong></h3>
+            </div>
+            <div style="text-align: center;width: 25%;">
+              <h3><strong>RDAC</strong></h3>
+            </div>
+          </div>
+          <div class="column has-text-centered" style="text-align: center; width: 100%;">
+            <video id="matting-video" controls playsinline height="100%" autoplay loop>
+              <source src="static/videos/20_30_kbps/4.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        
+        <div id="example_5_1" class="tabcontent_2" >
+          <div style="display: flex; flex-direction: row">
+            <div style="text-align: center; width: 25%;">
+              <h3><strong>Ground Truth</strong></h3>
+            </div>
+            <div style="text-align: center; width: 25%;">
+              <h3><strong>HEVC</strong></h3>
+            </div>
+            <div style="text-align: center;width: 25%;">
+              <h3><strong>HDAC</strong></h3>
+            </div>
+            <div style="text-align: center;width: 25%;">
+              <h3><strong>RDAC</strong></h3>
+            </div>          
+          </div>
+          <div class="column has-text-centered" style="text-align: center; width: 100%;">
+            <video id="matting-video" controls playsinline height="100%" autoplay loop>
+              <source src="static/videos/20_30_kbps/6.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <p>
+          The visual quality of hybrid animation codec (HDAC) and predictive animation codec (RDAC) are both
+          higher than HEVC in this bitrate range. However we observe a convergence in quality between HDAC and RDAC
+          such that in most of the video frames, the quality is largely similary.
+          The main advantage of RDAC over HDAC is that it is end-to-end trainable and has a bitrate interpolation
+          for frame residual coding. This allows for continous variation between the minimum and maximum lambda values.
+          On the other hand, HDAC is trained with fixed quality base layer frames and thus has discrete RD points.
+
+        </p>
+      </div>  
+        </div>
+        
       </div>
 
     </div>
+    <!--/Quantitative. -->
+
+    <!-- <div class="columns is-centered">
+      <div class="column is-full-width">
+      <h2 class="title is-4">Quantitative Metrics</h2>
+      <h3 class="title is-4"></h3>
+        <div class="content has-text-justified">
+          <p>
+           
+          </p>
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-3 has-text-centered">
+            <img src="#"
+                  class="interpolation-image"
+                  alt="Interpolate start reference image."/>
+            <p>Rate-Distortion Curve</p>
+          </div>
+          <div class="column is-3 has-text-centered">
+            <img src="#"
+                  class="interpolation-image"
+                  alt="subjective evaluation curve."/>
+            <p>Subjective Evaluation</p>
+          </div>
+          <div class="column is-3 has-text-centered">
+            <img src="#"
+                  class="interpolation-image"
+                  alt="table with PCC and ROCC."/>
+            <p class="is-bold">Metric Correlation Performance</p>
+          </div>
+        </div>
+        <br/>
+
+
+      </div>
+
+    </div>
+     -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{konuko2020dac,
+      author    = {Konuko, Goluck and Lathuilière, Stéphane and Valenzise, Giuseppe},
+      title     = {Ultra-low bitrate video conferencing using Deep Image animation models},
+      journal   = {ICASSP},
+      year      = {2020},
+    }</code></pre>
+    <pre>
+      <code>@article{konuko2022hdac,
+      author    = {Konuko, Goluck and Lathuilière, Stéphane and Valenzise, Giuseppe},
+      title     = {H-DAC: Hybrid coding with Deep Animation Models for Ultra-Low Bitrate Video Conferencing},
+      journal   = {ICIP},
+      year      = {2022},
+      }
+    </code>
+    </pre>
+    <pre>
+      <code>@article{konuko2023rdac,
+      author    = {Konuko, Goluck and Lathuilière, Stéphane and Valenzise, Giuseppe},
+      title     = {Predictive Coding for Animation-Based Video Compression},
+      journal   = {ICIP},
+      year      = {2023},
+      }
+      </code></pre>
+  </div>
+</section>
+
 
     <!-- Concurrent Work. -->
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3" style="text-align:center">Related Links</h2>
+        <h2 class="title is-3">Notable Related Works</h2>
 
         <div class="content has-text-justified">
           <p>
@@ -385,13 +613,13 @@
           </p>
           
           <p>
-            <a href="https://nvlabs.github.io/face-vid2vid/" target="_blank">Face-vid2vid:</a> Proposes a neural talking-head video synthesis model with novel-view rendering capability and demonstrates its application to video conferencing.
+            <a href="https://nvlabs.github.io/face-vid2vid/">Face-vid2vid:</a> Proposes a neural talking-head video synthesis model with novel-view rendering capability and demonstrates its application to video conferencing.
           </p>
           <p>
-            <a href="https://arxiv.org/abs/2012.00328" target="_blank">Motion-SPADE</a> Explores quality and bandwidth trade-offs for approaches based on static landmarks, dynamic landmarks or segmentation maps for image animation and proposes designs for mobile-compatible model architecture for low-latency chat applications.
+            <a href="https://arxiv.org/abs/2012.00328">Motion-SPADE</a> Explores quality and bandwidth trade-offs for approaches based on static landmarks, dynamic landmarks or segmentation maps for image animation and proposes designs for mobile-compatible model architecture for low-latency chat applications.
           </p>
           <p>
-            <a href="https://github.com/alibaba-edu/temporal-evolution-inference-with-compact-feature-representation-for-talking-face-video-compression" target="_blank">Beyond Keypoint Coding: Temporal Evolution Inference with Compact Feature Representation for Talking Face Video Compression</a>
+            <a href="https://github.com/alibaba-edu/temporal-evolution-inference-with-compact-feature-representation-for-talking-face-video-compression">Beyond Keypoint Coding: Temporal Evolution Inference with Compact Feature Representation for Talking Face Video Compression</a>
             Proposes a novel sparse representation for animation-based coding. We updated our own keypoint quantization and entropy coding processes to match those used by this work.
           </p>
         </div>
@@ -403,21 +631,17 @@
 </section>
 
 
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@article{konuko2022hdac,
-  author    = {Konuko, Goluck and Lathuilière, Stéphane and Valenzise, Giuseppe},
-  title     = {H-DAC: Hybrid coding with Deep Animation Models for Ultra-Low Bitrate Video Conferencing},
-  journal   = {ICIP},
-  year      = {2022},
-}</code></pre>
-  </div>
-</section>
-
-
 <footer class="footer">
   <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="#">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/Goluck-Konuko" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content">
@@ -426,11 +650,22 @@
                                                 href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
             Commons Attribution-ShareAlike 4.0 International License</a>.
           </p>
+          <!-- <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p> -->
         </div>
       </div>
     </div>
   </div>
 </footer>
-
+<script>
+  // Get the element with id="defaultOpen" and click on it
+  document.getElementById("defaultOpen").click();
+  document.getElementById("defaultOpen_2").click();
+</script>
 </body>
 </html>
